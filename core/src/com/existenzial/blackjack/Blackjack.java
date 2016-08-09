@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+
 public class Blackjack extends Game {
 	//set Screen Size and Pixel-Per-Meter
 	public static final int VIEW_WIDTH = 400;
