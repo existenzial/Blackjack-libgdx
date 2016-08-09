@@ -12,8 +12,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Blackjack extends Game {
 	//set Screen Size and Pixel-Per-Meter
-	public static final int VIEW_WIDTH = 400;
-	public static final int VIEW_HEIGHT = 208;
+	public static final int VIEW_WIDTH = 800;
+	public static final int VIEW_HEIGHT = 480;
 	public static final float PPM = 100;
 
 	public SpriteBatch batch;
