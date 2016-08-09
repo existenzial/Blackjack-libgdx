@@ -1,6 +1,9 @@
-package com.existenzial.blackjack.Screens;
+package com.existenzial.blackjack.States;
 
 
 public class GameOverState {
 
+    public GameOverState(){
+
+    }
 }
