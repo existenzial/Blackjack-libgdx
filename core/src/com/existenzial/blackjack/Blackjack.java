@@ -2,54 +2,55 @@ package com.existenzial.blackjack;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.existenzial.blackjack.Screens.MainMenuScreen;
+import com.existenzial.blackjack.Utils.GameManager;
 
 public class Blackjack extends Game {
-	//set Screen Size and Pixel-Per-Meter
-	public static final int VIEW_WIDTH = 800;
-	public static final int VIEW_HEIGHT = 480;
-	public static final float PPM = 100;
 
-	public SpriteBatch batch;
+    private SpriteBatch batch;
+    private TextureAtlas assetAtlas;
+    private BitmapFont font;
 
-	public static AssetManager assetManager;
+    private Music thememusic;
 
-	Texture img;
-	
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
+    @Override
+    public void create() {
 
-		//Load SoundFX + Music
-		//assetManager.load("", Music.class);
-		//assetManager.load("", Sound.class);
+        batch = new SpriteBatch();
+        assetAtlas = new TextureAtlas("packed/packt.atlas");
+        font = new BitmapFont(new FileHandle("font.fnt"), new FileHandle("font.png"), false);
 
-		//assetManager.finishLoading();
+        thememusic = Gdx.audio.newMusic(Gdx.files.internal("thememusic.mp3"));
 
-		img = new Texture("badlogic.jpg");
-	}
+        GameManager.getGameInstance();
 
-	@Override
-	public void render () {
-		super.render();
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		super.dispose();
-		//assetManager.dispose();
-		batch.dispose();
-		img.dispose();
-	}
+        setScreen(new MainMenuScreen(this));
+    }
+
+    @Override
+    public void render() {
+        super.render();
+    }
+
+    public final SpriteBatch getBatch() {
+        return this.batch;
+    }
+
+    public final TextureAtlas getAtlas(){
+        return this.assetAtlas;
+    }
+
+    public final BitmapFont getFont(){
+        return this.font;
+    }
+
+    public final Music getTheme(){
+        return this.thememusic;
+    }
+
 }
